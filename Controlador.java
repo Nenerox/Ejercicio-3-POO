@@ -31,7 +31,7 @@ public class Controlador {
     public ArrayList<Miembro> mostrarMiembrosSinAsignar() {
         ArrayList<Miembro> miembrosSinAsignar = new ArrayList<>();
         for (Miembro miembro : miembrosList) {
-            if (miembro.getEntrenador() == null && miembro.getRutina() == null) {
+            if (miembro.getEntrenador() == null || miembro.getRutina() == null) {
                 miembrosSinAsignar.add(miembro);
             }
         } return miembrosSinAsignar;
@@ -39,7 +39,7 @@ public class Controlador {
 
     public void asignarRutinaAMiembro(String nombreMiembro, String apellidoMiembro, String nombreRutina) {
         for (Miembro miembro : miembrosList) {
-            if (miembro.getNombre().equalsIgnoreCase(nombreMiembro) && miembro.getApellido().equalsIgnoreCase(nombreRutina)) {
+            if (miembro.getNombre().equalsIgnoreCase(nombreMiembro) && miembro.getApellido().equalsIgnoreCase(apellidoMiembro)) {
                 for (Rutina rutina : rutinasList) {
                     if (rutina.getNombre().equalsIgnoreCase(nombreRutina)) {
                         miembro.setRutina(rutina);
@@ -79,6 +79,14 @@ public class Controlador {
             }
             miembrosList.remove(miembroAEliminar);
         }
+    }
+
+    public ArrayList<Rutina> getRutinas() {
+        return rutinasList;
+    }
+    
+    public ArrayList<Entrenador> getEntrenadores() {
+        return entrenadoresList;
     }
     
     public int totalRutinas() {

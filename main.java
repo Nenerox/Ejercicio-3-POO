@@ -20,6 +20,7 @@ public class main {
             System.out.println("0. Salir");
             System.out.print("Seleccione una opción: ");
             opcion = scanner.nextInt();
+            scanner.nextLine(); // Limpiar el buffer
 
             switch (opcion) {
                 case 1:
@@ -52,6 +53,10 @@ public class main {
                     System.out.println("Ingrese el apellido del miembro:");
                     apellido = scanner.nextLine();
 
+                    System.out.println("Rutinas disponibles:");
+                    for (Rutina rutina : controlador.getRutinas()) {
+                        System.out.println(rutina.datos());
+                    }
                     System.out.println("Ingrese el nombre de la rutina:");
                     nombreRutina = scanner.nextLine();
                     controlador.asignarRutinaAMiembro(nombre, apellido, nombreRutina);
@@ -64,7 +69,11 @@ public class main {
                     nombre = scanner.nextLine();
                     System.out.println("Ingrese el apellido del miembro:");
                     apellido = scanner.nextLine();
-
+                    
+                    System.out.println("Entrenadores disponibles:");
+                    for (Entrenador entrenador : controlador.getEntrenadores()) {
+                        System.out.println(entrenador.datos());
+                    }
                     System.out.println("Ingrese el nombre del entrenador:");
                     nombreEntrenador = scanner.nextLine();
                     System.out.println("Ingrese el apellido del entrenador:");
