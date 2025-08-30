@@ -5,6 +5,7 @@ public class Controlador {
     private ArrayList<Rutina> rutinasList = new ArrayList<>();
     private ArrayList<Entrenador> entrenadoresList= new ArrayList<>();
 
+    //agregar miembro, rutina, entrenador
     public void addMiembro(String nombre, String apellido) {
         Miembro miembro = new Miembro(nombre, apellido);
         miembrosList.add(miembro);
@@ -20,6 +21,7 @@ public class Controlador {
         entrenadoresList.add(entrenador);
     }
 
+    //buscar miembro especifico
     public Miembro buscarMiembro(String nombre, String apellido) {
         for (Miembro miembro : miembrosList) {
             if (miembro.getNombre().equalsIgnoreCase(nombre) && miembro.getApellido().equalsIgnoreCase(apellido)) {
@@ -28,6 +30,7 @@ public class Controlador {
         } return null;
     }
 
+    //regresar una lista con miembros sin un entrenador o rutina asignada
     public ArrayList<Miembro> mostrarMiembrosSinAsignar() {
         ArrayList<Miembro> miembrosSinAsignar = new ArrayList<>();
         for (Miembro miembro : miembrosList) {
@@ -37,6 +40,7 @@ public class Controlador {
         } return miembrosSinAsignar;
     } 
 
+    //asignar rutina o entrenador a un miembro
     public void asignarRutinaAMiembro(String nombreMiembro, String apellidoMiembro, String nombreRutina) {
         for (Miembro miembro : miembrosList) {
             if (miembro.getNombre().equalsIgnoreCase(nombreMiembro) && miembro.getApellido().equalsIgnoreCase(apellidoMiembro)) {
@@ -63,6 +67,7 @@ public class Controlador {
         }
     }
 
+    //eliminar miembro de la lista
     public void eliminarMiembro(String nombre, String apellido) {
         Miembro miembroAEliminar = null;
         for (Miembro miembro : miembrosList) {
@@ -81,6 +86,7 @@ public class Controlador {
         }
     }
 
+    //metodos para obtener listas y totales
     public ArrayList<Rutina> getRutinas() {
         return rutinasList;
     }
@@ -101,6 +107,7 @@ public class Controlador {
         return miembrosList.size();
     }
 
+    //metodos para obtener el entrenador y la rutina mas popular
     public String rutinaMasPopular() {
         String rutinaPopular = "";
         int Miembros = -1;
@@ -112,6 +119,7 @@ public class Controlador {
         }
         return rutinaPopular;
     }
+
     public String entrenadorMasPopular() {
         String entrenadorPopular = "";
         int Miembros = -1;
